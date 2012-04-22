@@ -1,0 +1,332 @@
+<!doctype html>  
+<html lang="en" class="no-js">
+<head>
+	<title></title>	
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<!-- CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/global.css" />
+	<link rel="stylesheet" href="css/avatars.css" />
+</head>
+<body>
+	<div id="content" data-role="page">
+		<div id="overflow"></div>
+		<img src="images/offline.png" id="offline_icon" />
+		<div id="msgSlide"><div><h1></h1><p></p></div></div>
+		
+		<section id="registerScreen">
+			<div class="box" id="loginScreen">
+				<h1><span>Login</span></h1>
+				<div class="content">
+					<input type="text" value="" id="loginUsername" name="loginUsername" placeholder="In Game Name"/>
+					<input type="password" value="" id="loginPassword" name="loginPassword" placeholder="Password"/>
+					<button onclick="Auth.doLogin();" class="fl">Login</button>
+					<button onclick="Screens.closeLoginScreen();" class="fr">Cancel</button>
+					<br style="clear:both;display:block;"/><br/>
+					<a href="#" class="fr" style="color:#612c1d" onclick="Screens.showForgotScreen();">Forgot Password?</a>
+				</div>
+			</div>
+			
+			<div class="box" id="forgotScreen">
+				<h1><span>Forgot</span></h1>
+				<div class="content">
+					<input type="email" value="" id="forgotEmail" name="forgotEmail" placeholder="Email address"/>
+					<button onclick="Auth.doForgot();" class="fl">Send</button>
+					<button onclick="Screens.closeForgotScreen();" class="fr">Cancel</button>
+				</div>
+			</div>
+
+			
+			<div class="registerScreenHolder">
+				<h1>Are You?</h1>
+				<div class="race_holder">
+					<input type='radio' name='regRaceSex' value='11' id="race11"><label for="race11"><b class='icon i-race11'></b>&nbsp;Male</label><br />
+					<input type='radio' name='regRaceSex' value='12' id="race12" ><label for="race12"><b class='icon i-race12'></b>&nbsp;Female</label><br />
+				</div>
+				<div class="race_holder2">
+					<input type='radio' name='regRaceSex' value='21' id="race21"><label for="race21"><b class='icon i-race21'></b>&nbsp;Male</label><br />
+					<input type='radio' name='regRaceSex' value='22' id="race22"><label for="race22"><b class='icon i-race22'></b>&nbsp;Female</label><br />
+				</div>
+				<h1>Account Information:</h1>
+				<input type="text" value="" id="regUsername" name="regUsername" placeholder="In Game Name"/>
+				<input type="password" value="" id="regPassword" name="regPassword" placeholder="Password"/>
+				<input type="password" value="" id="regPassword2" name="regPassword2" placeholder="Repeat Password"/>
+				<button onclick="Auth.doRegister();" class="fl">Register</button>
+				<button onclick="Screens.showLoginScreen();" class="fr">Already Registered?</button>
+			</div>
+		</section>		
+		
+		<section id="mainScreen">
+			<div id="silver"></div>
+			<div id="gold"></div>
+			<div id="pearl"></div>
+			<div id="crystal"></div>
+			<div id="health-bg"></div>
+			<div id="health">100% (1568)</div>
+			<header id="avatar">
+				<div id="avatar-username">Chicken</div>
+				<div id="avatar-image" class="avatar"><div class="avatar-bg"><div class="avatar-body"><div class="avatar-eyes"><div class="avatar-beak"><div class="avatar-jewelry"><div class="avatar-head"></div></div></div></div></div></div></div>
+				<div id="avatar-overlay" onclick="Screens.openScreen('profile');"></div>
+			</header>
+			<!-- Village -->
+			<section id="village-map" class="b-holder">
+				<div id="btnMap-mine" class="b-icon" onclick="Screens.showBuilding('mine');"></div>
+				<div id="btnMap-post" class="b-icon" onclick="Screens.showBuilding('post');"></div>
+				<div id="btnMap-church" class="b-icon" onclick="Screens.showBuilding('church');"></div>
+				<div id="btnMap-merchant" class="b-icon" onclick="Screens.showBuilding('merchant');"></div>
+				<div id="btnMap-market" class="b-icon" onclick="Screens.showBuilding('market');"></div>
+				<div id="btnMap-tavern" class="b-icon" onclick="Screens.showBuilding('tavern');"></div>
+				<div id="btnMap-farm" class="b-icon" onclick="Screens.showBuilding('farm');"></div>
+				<div id="btnMap-house" class="b-icon" onclick="Screens.showHouse();"></div>
+				<div id="btnMap-smith" class="b-icon" onclick="Screens.showBuilding('smith');"></div>
+				<div id="btnMap-well" class="b-icon" onclick="Screens.showBuilding('well');"></div>
+				<div id="btnMap-harbour" class="b-icon" onclick="Screens.showBuilding('harbour');"></div>
+				<div id="btnMap-castle" class="b-icon" onclick="Screens.showBuilding('castle');"></div>
+			</section>
+			
+			<!-- House -->
+			<section id="house-map" class="b-holder">
+				<div class="b-label">House</div>
+				<div id="btnMap-mine" class="b-icon" onclick="alert('mine');"></div>
+				<nav class="b-menu">
+					<button class="fl" onclick="alert('Open bulding list in modal window');">Build</button>
+					<button class="fr" onclick="Screens.closeHouse();">Back</button>
+				</nav>
+			</section>
+
+			<!-- Mine -->
+			<section id="mine-building" class="b-holder">
+				<div class="b-label">Mine</div>
+				<div class="b-main">
+					<div class="b-image b-image-mine"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('mine');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Post -->
+			<section id="post-building" class="b-holder">
+				<div class="b-label">Post</div>
+				<div class="b-main">
+					<div class="b-image b-image-post"></div>
+					<p>In the patrol must be prepared for everything and if you do not sleep on duty, you can count on some adventure.</p>
+					<p>Price: <span class='price_num'>10</span>&nbsp;<b class='icon i-silver'></b></p>
+					<p><select name='auto_watch' style='width: 180px;'><option value='1'>10 мин</option><option value='2'>20 мин</option><option value='3'>30 мин</option><option value='4'>40 мин</option><option value='5'>50 мин</option><option value='6'>60 мин</option><option value='7'>70 мин</option><option value='8'>80 мин</option><option value='9'>90 мин</option><option value='10'>100 мин</option><option value='11'>110 мин</option><option value='12'>120 мин</option></select> <p>
+
+					<p><button >Start</button></p>
+					<p>Time Left: 120</p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('post');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Church -->
+			<section id="church-building" class="b-holder">
+				<div class="b-label">Church</div>
+				<div class="b-main">
+					<div class="b-image b-image-church"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('church');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Merchant -->
+			<section id="merchant-building" class="b-holder">
+				<div class="b-label">Merchant</div>
+				<div class="b-main">
+					<div class="b-image b-image-merchant"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('merchant');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Market -->
+			<section id="market-building" class="b-holder">
+				<div class="b-label">Market</div>
+				<div class="b-main">
+					<div class="b-image b-image-market"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('market');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Tavern -->
+			<section id="tavern-building" class="b-holder">
+				<div class="b-label">Tavern</div>
+				<div class="b-main">
+					<div class="b-image b-image-tavern"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('tavern');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Farm -->
+			<section id="farm-building" class="b-holder">
+				<div class="b-label">Farm</div>
+				<div class="b-main">
+					<div class="b-image b-image-farm"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('farm');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Smith -->
+			<section id="smith-building" class="b-holder">
+				<div class="b-label">Smith</div>
+				<div class="b-main">
+					<div class="b-image b-image-smith"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('smith');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Well -->
+			<section id="well-building" class="b-holder">
+				<div class="b-label">Well</div>
+				<div class="b-main">
+					<div class="b-image b-image-well"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('well');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Harbour -->
+			<section id="harbour-building" class="b-holder">
+				<div class="b-label">Harbour</div>
+				<div class="b-main">
+					<div class="b-image b-image-harbour"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('harbour');">Back</button>
+				</nav>
+			</section>
+
+			<!-- Castle -->
+			<section id="castle-building" class="b-holder">
+				<div class="b-label">Castle</div>
+				<div class="b-main">
+					<div class="b-image b-image-castle"></div>
+					<p></p>
+				</div>
+				<nav class="b-menu">
+					<button class="fr" onclick="Screens.closeBuilding('castle');">Back</button>
+				</nav>
+			</section>
+			
+			
+			<!-- Profile -->
+			<section id="profile-screen" class="b-holder-f">
+				<div class="profile-holder">
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+					<div id="profile-item-safe"></div>
+				</div>
+				<nav class="b-menu">
+					<button class="fl" onclick="Screens.closeScreen('fight');Auth.doLogout();">Logout</button>
+					<button class="fr" onclick="Screens.closeScreen('profile');">Close</button>
+				</nav>
+			</section>
+			
+			<!-- Fight -->
+			<section id="fight-screen" class="b-holder-f">
+				<nav class="b-menu">
+					<button onclick="Screens.closeScreen('fight');" class="cr">Close</button>
+				</nav>
+			</section>	
+			
+			<!-- Forum -->
+			<section id="forum-screen" class="b-holder-f">
+				<nav class="b-menu">
+					<button onclick="Screens.closeScreen('forum');" class="cr">Close</button>
+				</nav>
+			</section>
+			
+			<!-- Chat -->
+			<section id="chat-screen" class="b-holder-f">
+				<nav class="b-menu">
+					<button onclick="Screens.closeScreen('chat');" class="cr">Close</button>
+				</nav>
+			</section>
+			
+			<!-- Statistics -->
+			<section id="statistics-screen" class="b-holder-f">
+				<nav class="b-menu">
+					<button onclick="Screens.closeScreen('statistics');" class="cr">Close</button>
+				</nav>
+			</section>
+			
+			<!-- Clan -->
+			<section id="clan-screen" class="b-holder-f">
+				<nav class="b-menu">
+					<button onclick="Screens.closeScreen('clan');" class="cr">Close</button>
+				</nav>
+			</section>
+
+			
+			
+			<footer>
+				<nav>
+					<div onclick="Screens.openScreen('fight');"></div>
+					<div onclick="Screens.openScreen('forum');"></div>
+					<div onclick="Screens.openScreen('chat');"></div>
+					<div onclick="Screens.openScreen('statistics');"></div>
+					<div onclick="Screens.openScreen('clan');"></div>
+				</nav>
+			</footer>
+		</section>
+		
+		<section class="modalDialog"><div class="box"><h1><span></span></h1><div class="content"></div></div></section>
+				
+	</div>
+	<!--Config JS-->
+	<script src="js/config.js"></script>
+	<!--Library JS-->
+	<script src="phonegap.js"></script>
+	<script src="js/jquery.js"></script>
+	<!--Actions JS-->
+	<script src="js/request.js"></script>
+	<script src="js/db.js"></script>
+	<script src="js/log.js"></script>
+	<script src="js/language.js"></script>
+	<script src="js/timers.js"></script>
+	<script src="js/check.js"></script>
+	<script src="js/messages.js"></script>
+	<script src="js/actions.js"></script>
+	<script src="js/screens.js"></script>
+	<script src="js/main.screen.js"></script>
+	<script src="js/mail.js"></script>
+	<!--UI JS-->
+	<script src="js/ui.auth.js"></script>
+	<!--Init JS-->
+	<script src="js/init.js"></script>
+
+</body>
+</html>

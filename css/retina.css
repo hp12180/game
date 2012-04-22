@@ -1,0 +1,7 @@
+#content {background-image:url(../images/theme/640/bg.jpg);-webkit-background-size:320px 460px;}
+	#content.inside{background-image:url(../images/theme/640/bg-main.jpg);-webkit-background-size:320px 460px;}
+			
+	#mainScreen #avatar{background:url(../images/theme/640/avatar-holder.jpg) no-repeat;-webkit-background-size:118px 123px;}	
+	#mainScreen #village-map{background:url(../images/theme/640/village.jpg) no-repeat;-webkit-background-size:320px 348px;}
+
+		

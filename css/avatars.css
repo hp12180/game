@@ -1,0 +1,17 @@
+#mainScreen #avatar #avatar-image{
+	display:block;
+	position:relative;
+	top:-2px;
+	left:10px;
+	width:60px;
+	height:75px;
+	z-index:1;
+}
+
+	#mainScreen #avatar #avatar-image div{display:block;width:60px;height:75px;position:relative;top:0px;left:0px;}
+	
+	
+	.avatar-race1.avatar-gender1{background-image:url(../images/theme/320/avatars/chicken.jpg);}
+	.avatar-race1.avatar-gender2{background-image:url(../images/theme/320/avatars/chicken.jpg);}
+	.avatar-race2.avatar-gender1{background-image:url(../images/theme/320/avatars/duck.jpg);}
+	.avatar-race2.avatar-gender2{background-image:url(../images/theme/320/avatars/duck.jpg);}	
